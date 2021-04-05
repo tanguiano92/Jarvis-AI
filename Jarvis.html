@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"
-  <title>Virtual Assistant Ivy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" <title>Virtual Assistant Ivy</title>
   <style>
-    body{
-      background-color: cyan;}
+    body {
+      background-color: cyan;
+    }
   </style>
 </head>
+
 <body>
   <h1>Hello, I am Ivy, Virtual Assistant, How Can I Help You?</h1>
-  <div class = "wrapper"></div>
-  <div></div>
+  <div class="wrapper"></div>
+  <div class="actions">
+    <button id="start">Talk</button>
+    <button id="end">End</button>
+  </div>
+  <div id="transcript">
+  </div>
+  <script>
+    window.SpeechRecognition * window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+    const trascript_element = document.getElementById('transcript')
+    const talk_button = document.getElementById('start')
+    const end_button = document.getElementById('end')
+  </script>
 </body>
+
 </html>

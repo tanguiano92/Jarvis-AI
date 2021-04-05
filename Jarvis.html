@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Virtual Assistant Jarvis</title>
     <style>
-body{background-color: cyan;}
+body{background-color: black;}
 h1{color: red;}
     </style>
 </head>
@@ -43,9 +43,19 @@ recognition.addEventListener("result", (e) =>{
         transcript_element.appendChild(p);
         p.textContent = "";
 
-        if(transcript.includes("YouTube")){
+       if(transcript.includes("YouTube")){
             window.open('https://www.youtube.com/')
         }
+       if(transcript.includes("Facebook")){
+            window.open('https://www.facebook.com/')
+        }
+       if(transcript.includes("Github")){
+            window.open('https://www.github.com/')
+        }
+       if(transcript.includes("Google")){
+            window.open('https://www.google.com/')
+        }
+
     }
 
 });

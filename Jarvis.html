@@ -11,7 +11,7 @@
   </style>
 </head>
 
-<body>
+<body onload ="greeting()">
   <h1>Hello, I am Ivy, Virtual Assistant, How Can I Help You?</h1>
   <div class="wrapper"></div>
   <div class="actions">
@@ -25,9 +25,55 @@
 
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
-    const trascript_element = document.getElementById('transcript')
-    const talk_button = document.getElementById('start')
-    const end_button = document.getElementById('end')
+    const trascript_element = document.getElementById('transcript');
+    const talk_button = document.getElementById('start');
+    const end_button = document.getElementById('end');
+
+    let p = document.createElement("p");
+    transcript_element.appendChild(p);
+
+    recognition.addEventListener("result", (e) =>{
+      const transcript = Array.from(e.result)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join("");
+      p.textContent = transcript;
+      if(e.results[0].isFinal){
+        p = document.createElement("p")
+        p.textContent = transcript;
+        transcript_element.appendChild(p);
+        p.textContent = "";
+
+        if(transcript.includes("Youtube")){
+          window.open('https://www.youtube.com/')
+          if(transcript.includes("Facebook")){
+            window.open('https://www.facebook.com/')
+            if(transcript.includes("Github")){
+              window.open('https://www.github.com/')
+              if(transcript.includes("Instagram")){
+                window.open('https://www.instagram.com/')
+        }
+      }
+    });
+
+    function greeting(){
+      alert("Have a wonderful day.");
+    }
+
+    recognition.addEventListener("end", () =>{
+      end_button.disbaled = false;
+      talk_button.disabled = true;
+    });
+    talk_button.addEventListener("click", () => {
+      end_button.disabled = false;
+      talk_button.disabled = true;
+      recognition.start();
+    });
+    end_button.addEventListener("click", () => {
+      end_button.disabled = true;
+      talk_button.disabled = false;
+      recognition.stop();
+    })
   </script>
 </body>
 
